@@ -43,7 +43,12 @@ ul {
 	left: 0;
 	right: 0;
 	transform: translateY(-50%);
-	color: tomato;
+	color: rgba(255, 140, 0, 0.4);
+	transition: color 150ms linear;
+}
+
+.slider:hover .arrows {
+	color: rgba(255, 140, 0, 1);
 }
 
 .arrow-prev,
