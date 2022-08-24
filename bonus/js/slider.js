@@ -14,6 +14,7 @@ const app = new Vue({
 		name: 'Vue Carousel',
 		slides,
 		idSlideActive: 0,
+		intervalId: undefined,
 	},
 	methods: {
 		nextSlide() {
@@ -27,6 +28,15 @@ const app = new Vue({
 				this.idSlideActive--;
 			else
 				this.idSlideActive = this.slides.length - 1;
-		}
-	}
+		},
+		setAutoplay() {
+			this.intervalId = setInterval(this.nextSlide, 3000);
+		},
+		stopAutoplay() {
+			clearInterval(this.intervalId);
+		},
+	},
+	mounted() {
+		this.setAutoplay();
+	},
 });
