@@ -30,10 +30,15 @@ const app = new Vue({
 				this.idSlideActive = this.slides.length - 1;
 		},
 		setAutoplay() {
-			this.intervalId = setInterval(this.nextSlide, 3000);
+			if( this.intervalId === undefined ) {
+				this.intervalId = setInterval(this.nextSlide, 3000);
+			}
 		},
 		stopAutoplay() {
-			clearInterval(this.intervalId);
+			if( this.intervalId !== undefined ) {
+				clearInterval(this.intervalId);
+				this.intervalId = undefined;
+			}
 		},
 		thumbClick(index) {
 			this.idSlideActive = index;
