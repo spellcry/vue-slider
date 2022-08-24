@@ -40,7 +40,8 @@
       </div>
 
       <div class="thumbnails">
-        <div v-for="(thumbnail, index) in slides" :class="index === idSlideActive ? 'active' : ''" class="thumbnail">
+        <div @click="thumbClick(index)" v-for="(thumbnail, index) in slides"
+          :class="index === idSlideActive ? 'active' : ''" class="thumbnail">
           <img :src="thumbnail" alt="">
         </div>
       </div>

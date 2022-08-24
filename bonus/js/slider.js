@@ -35,6 +35,11 @@ const app = new Vue({
 		stopAutoplay() {
 			clearInterval(this.intervalId);
 		},
+		thumbClick(index) {
+			this.idSlideActive = index;
+			this.stopAutoplay();
+			this.setAutoplay();
+		},
 	},
 	mounted() {
 		this.setAutoplay();
