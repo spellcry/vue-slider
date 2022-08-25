@@ -22,13 +22,13 @@
 
       <div class="slider">
 
-        <ul @mouseover="stopAutoplay" @mouseleave="setAutoplay" class="slides-wrapper">
+        <ul @mouseenter="stopAutoplay" @mouseleave="setAutoplay" class="slides-wrapper">
           <li v-for="(slide, index) in slides" :class="index === idSlideActive ? 'active' : ''" class="slide">
             <img :src="slide" alt="">
           </li>
         </ul>
 
-        <div @mouseover="stopAutoplay" @mouseleave="setAutoplay" class="arrows">
+        <div @mouseenter="stopAutoplay" @mouseleave="setAutoplay" class="arrows">
           <p @click="prevSlide" class="arrow-prev">
             <i class="fa-solid fa-chevron-left"></i>
           </p>

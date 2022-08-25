@@ -18,16 +18,25 @@ const app = new Vue({
 	},
 	methods: {
 		nextSlide() {
-			if (this.idSlideActive + 1 < this.slides.length)
-				this.idSlideActive++;
-			else
-				this.idSlideActive = 0;
-			},
+			this.idSlideActive = this.isEnd() ? 0 : this.idSlideActive + 1;
+			// if (this.idSlideActive + 1 < this.slides.length)
+			// 	this.idSlideActive++;
+			// else
+			// 	this.idSlideActive = 0;
+		},
 		prevSlide() {
-			if (this.idSlideActive - 1 >= 0)
-				this.idSlideActive--;
-			else
-				this.idSlideActive = this.slides.length - 1;
+			this.idSlideActive = this.isStart() ? this.slides.length - 1 : this.idSlideActive - 1;
+			// if (this.idSlideActive - 1 >= 0)
+			// 	this.idSlideActive--;
+			// else
+			// 	this.idSlideActive = this.slides.length - 1;
+		},
+		isEnd() {
+			const lastIndex = this.slides.length - 1;
+			return this.idSlideActive === lastIndex;
+		},
+		isStart() {		
+			return this.idSlideActive === 0;
 		},
 		setAutoplay() {
 			if( this.intervalId === undefined ) {
