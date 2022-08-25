@@ -16,6 +16,11 @@ const app = new Vue({
 		idSlideActive: 0,
 		intervalId: undefined,
 	},
+	computed: {
+		lastIndex() {
+			return this.slides.length - 1;
+		},
+	},
 	methods: {
 		nextSlide() {
 			this.idSlideActive = this.isEnd() ? 0 : this.idSlideActive + 1;
@@ -25,15 +30,14 @@ const app = new Vue({
 			// 	this.idSlideActive = 0;
 		},
 		prevSlide() {
-			this.idSlideActive = this.isStart() ? this.slides.length - 1 : this.idSlideActive - 1;
+			this.idSlideActive = this.isStart() ? this.lastIndex : this.idSlideActive - 1;
 			// if (this.idSlideActive - 1 >= 0)
 			// 	this.idSlideActive--;
 			// else
 			// 	this.idSlideActive = this.slides.length - 1;
 		},
 		isEnd() {
-			const lastIndex = this.slides.length - 1;
-			return this.idSlideActive === lastIndex;
+			return this.idSlideActive === this.lastIndex;
 		},
 		isStart() {		
 			return this.idSlideActive === 0;
